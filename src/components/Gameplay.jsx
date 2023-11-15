@@ -4,7 +4,7 @@ import "../styles/Gameplay.css"
 
 function Gameplay() {
   return (
-    <div className="gameplay-page">
+    <div className="gameplay-page" data-testid="gameplay-component">
       <header className="gameplay-header">
         <BackIcon />
         <div className="question-container">

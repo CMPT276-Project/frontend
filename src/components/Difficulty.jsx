@@ -6,7 +6,7 @@ import "../styles/Difficulty.css"
 
 function Difficulty() {
   return (
-    <div className="difficulty-page">
+    <div className="difficulty-page" data-testid="difficulty-component">
       <header className="difficulty-header">
         <BackIcon />
         <div className="difficulty-title-container">

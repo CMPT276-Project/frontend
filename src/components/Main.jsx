@@ -8,7 +8,7 @@ import BackIcon from "./icons/BackIcon"
 function Main() {
 
     return (
-        <div className="main-page">
+        <div className="main-page" data-testid="main-component">
             <header className="game-header"> 
                 <div className="game-title-container">
                     <span className="quiz">Quiz</span><span className="quest">Quest</span>
