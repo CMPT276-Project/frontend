@@ -18,14 +18,3 @@ const collisionMap1 = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 ]
-
-Array.prototype.parse2D = function() {
-    const rows = []
-    for(let i = 0; i < this.length; i+=32){
-        rows.push(this.slice(i,i+32))
-    }
-
-    return rows
-}
-const parsedCollisions = collisionMap1.parse2D()
-console.log(parsedCollisions)

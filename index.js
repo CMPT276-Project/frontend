@@ -4,6 +4,11 @@ const c = canvas.getContext('2d')
 canvas.width = 1024
 canvas.height = 576
 
+const parsedCollisions = collisionMap1.parse2D()
+console.log(parsedCollisions)
+
+const collisionBlocks = parsedCollisions.createObjectsFrom2d()
+
 const backgroundMap1 = new Sprite({
     position: {
         x: 0,
@@ -43,6 +48,9 @@ function animate(){
     window.requestAnimationFrame(animate)
 
     backgroundMap1.draw()
+    collisionBlocks.forEach(CollisionBlock => {
+        CollisionBlock.draw()
+    })
 
     player.velocity.x = 0
 
