@@ -19,7 +19,9 @@ const backgroundMap1 = new Sprite({
 
 
 //call constructor in Player.js file
-const player = new Player()
+const player = new Player({
+    collisionBlocks: collisionBlocks
+})
 
 // Set default for keys
 const keys = {
