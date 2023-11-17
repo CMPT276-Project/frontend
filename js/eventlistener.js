@@ -6,13 +6,13 @@ window.addEventListener('keydown', (event) => {
         case 'w':
             if (player.velocity.y === 0){
                 player.velocity.y = -15
-                break
             }
+            break
         case 'ArrowUp':
             if (player.velocity.y === 0){
                 player.velocity.y = -15
-                break
             }
+            break
         //move player to the right
         case 'd':
             keys.d.pressed = true

@@ -4,12 +4,13 @@ const c = canvas.getContext('2d')
 canvas.width = 1024
 canvas.height = 576
 
-class Sprite {
-    constructor(position) {
-        this.position = position
-        this.image = new Image()
-    }
-}
+const backgroundMap1 = new Sprite({
+    position: {
+        x: 0,
+        y: 0,
+    },
+    imageSrc: './images/backgroundMap1.png'
+})
 
 
 //call constructor in Player.js file
@@ -40,8 +41,8 @@ const keys = {
 
 function animate(){
     window.requestAnimationFrame(animate)
-    c.fillStyle = 'white'
-    c.fillRect(0,0,canvas.width, canvas.height)
+
+    backgroundMap1.draw()
 
     player.velocity.x = 0
 
