@@ -31,6 +31,9 @@ const keys = {
     ArrowUp: {
         pressed: false
     },
+    Space: {
+        pressed: false
+    },
     d: {
         pressed: false
     },

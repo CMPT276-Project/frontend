@@ -13,6 +13,11 @@ window.addEventListener('keydown', (event) => {
                 player.velocity.y = -15
             }
             break
+        case 'Space':
+            if (player.velocity.y === 0){
+                player.velocity.y = -15
+            }
+            break
         //move player to the right
         case 'd':
             keys.d.pressed = true
