@@ -29,12 +29,24 @@ class Player {
     this.position.y += this.velocity.y;
     this.sides.bottom = this.position.y + this.height;
 
+    // Constrain player within the canvas
+    if (this.position.x < 0) {
+      this.position.x = 0;
+      this.velocity.x = 0;
+    } else if (this.position.x + this.width > canvas.width) {
+      this.position.x = canvas.width - this.width;
+      this.velocity.x = 0;
+    }
+
     //above bottom of canvas
     if (this.sides.bottom + this.velocity.y < canvas.height) {
       this.velocity.y += this.gravity;
-    } else this.velocity.y = 0;
+    } else {
+      this.position.y = canvas.height - this.height;
+      this.velocity.y = 0;
+    }
 
-    // collision check with the map
+    // Collision check with the map
     const col = Math.floor(this.position.x / this.width);
     const row = Math.floor(this.position.y / this.height);
     const index = row * 32 + col;
