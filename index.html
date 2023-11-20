@@ -1,16 +1,28 @@
-<style>
-    body{
-        background: black;
-    }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black;
+        }
 
-<canvas>
+        canvas {
+            display: block;
+        }
+    </style>
+    <title>Canvas Game</title>
+</head>
 
-</canvas>
+<body>
+    <canvas id="gameCanvas" width="1024" height="576"></canvas>
 
-<script src ="js/classes/Player.js"></script>
-<script src ="js/eventlistener.js"></script>
-<script src ="index.js"></script>
-
-
-
+    <script src="js/classes/Player.js"></script>
+    <script src="js/eventlistener.js"></script>
+    <script src="js/data/map1-collisions.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
