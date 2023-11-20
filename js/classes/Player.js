@@ -45,15 +45,5 @@ class Player {
       this.position.y = canvas.height - this.height;
       this.velocity.y = 0;
     }
-
-    // Collision check with the map
-    const col = Math.floor(this.position.x / this.width);
-    const row = Math.floor(this.position.y / this.height);
-    const index = row * 32 + col;
-
-    if (mapCollision[index] === 1) {
-      this.position.y = row * this.height;
-      this.velocity.y = 0;
-    }
   }
 }
