@@ -13,6 +13,8 @@ class Sprite {
 
 //call constructor in Player.js file
 const player = new Player();
+const map = new Image();
+map.src = 'images/Background Map 1.png';
 
 // Set default for keys
 const keys = {
@@ -42,8 +44,7 @@ function animate() {
   canvas.height = window.innerHeight;
 
   window.requestAnimationFrame(animate);
-  c.fillStyle = "white";
-  c.fillRect(0, 0, canvas.width, canvas.height);
+  c.drawImage(map, 0, 0, canvas.width, canvas.height);
 
   player.velocity.x = 0;
 
@@ -51,6 +52,7 @@ function animate() {
   else if (keys.s.pressed || keys.ArrowLeft.pressed) player.velocity.x = -5;
   player.draw();
   player.update();
+
 }
 
 //listen for window resize events
@@ -61,3 +63,4 @@ window.addEventListener("resize", () => {
 });
 
 animate();
+
