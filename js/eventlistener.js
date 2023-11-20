@@ -3,8 +3,8 @@ window.addEventListener("keydown", (event) => {
   switch (event.key) {
     // move player up
     case "w":
-    case ' ':
-    case 'ArrowUp':
+    case " ":
+    case "ArrowUp":
       if (player.velocity.y === 0) {
         player.velocity.y = -15;
         break;
