@@ -1,8 +1,8 @@
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 
-canvas.width = 1024;
-canvas.height = 576;
+canvas.width = window.innerWidth;
+canvas.height = window.innerWidth;
 
 class Sprite {
   constructor(position) {
@@ -37,6 +37,10 @@ const keys = {
 };
 
 function animate() {
+  //update canvas size on each animation frame
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
   window.requestAnimationFrame(animate);
   c.fillStyle = "white";
   c.fillRect(0, 0, canvas.width, canvas.height);
@@ -48,4 +52,12 @@ function animate() {
   player.draw();
   player.update();
 }
+
+//listen for window resize events
+window.addEventListener("resize", () => {
+  //update canvas size on window resize
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
 animate();
