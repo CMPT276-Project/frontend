@@ -1,4 +1,4 @@
-class Player{
+class Player extends Sprite{
     constructor({
         collisionBlocks = []
     }){
@@ -23,11 +23,6 @@ class Player{
         this.collisionBlocks = collisionBlocks
         console.log(this.collisionBlocks)
     }
-
-  draw() {
-    c.fillStyle = "red";
-    c.fillRect(this.position.x, this.position.y, this.width, this.height);
-  }
 
     update(){
             this.position.x += this.velocity.x
