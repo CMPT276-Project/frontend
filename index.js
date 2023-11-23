@@ -47,12 +47,6 @@ const keys = {
     },
 };
 
-
-function animate() {
-  //update canvas size on each animation frame
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
 function animate(){
     window.requestAnimationFrame(animate)
 
