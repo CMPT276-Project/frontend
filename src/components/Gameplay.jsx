@@ -1,19 +1,22 @@
-import React from 'react'
+import React, {useState, usesEffect} from 'react'
 import BackIcon from "./icons/BackIcon"
 import "../styles/Gameplay.css"
 
 function Gameplay() {
+
   return (
     <div className="gameplay-page" data-testid="gameplay-component">
       <header className="gameplay-header">
         <BackIcon />
         <div className="question-container">
-          <span className="question">Question</span>
+          <span className="question">
+            Question
+          </span>
         </div>
       </header>
       <div className="info-container">
         <div className="image-option">
-          <div className="image">Image</div>
+          <div className="image"></div>
           <div className="option-container">
             <div className="option option-1">Option 1</div>
             <div className="option option-1">Option 2</div>
