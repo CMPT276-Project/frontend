@@ -5,17 +5,17 @@ window.addEventListener('keydown', (event) => {
         // move player up
         case 'w':
             if (player.velocity.y === 0){
-                player.velocity.y = -15
+                player.velocity.y = -20
             }
             break
         case 'ArrowUp':
             if (player.velocity.y === 0){
-                player.velocity.y = -15
+                player.velocity.y = -20
             }
             break
         case 'Space':
             if (player.velocity.y === 0){
-                player.velocity.y = -15
+                player.velocity.y = -20
             }
             break
         //move player to the right
