@@ -1,8 +1,8 @@
-const canvas = document.querySelector('canvas')
-const c = canvas.getContext('2d')
+const canvas = document.querySelector("canvas");
+const c = canvas.getContext("2d");
 
-canvas.width = 1024
-canvas.height = 576
+canvas.width = window.innerWidth;
+canvas.height = window.innerWidth;
 
 const parsedCollisions = collisionMap1.parse2D()
 console.log(parsedCollisions)
@@ -16,7 +16,6 @@ const backgroundMap1 = new Sprite({
     },
     imageSrc: './images/backgroundMap1.png'
 })
-
 
 //call constructor in Player.js file
 const player = new Player({
@@ -45,9 +44,14 @@ const keys = {
     },
     ArrowLeft: {
         pressed: false
-    } 
+    },
+};
 
-}
+
+function animate() {
+  //update canvas size on each animation frame
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
 function animate(){
     window.requestAnimationFrame(animate)
@@ -57,12 +61,19 @@ function animate(){
         CollisionBlock.draw()
     })
 
-    player.velocity.x = 0
+  player.velocity.x = 0;
 
-    if ((keys.d.pressed)||(keys.ArrowRight.pressed)) player.velocity.x = 5
-    else if ((keys.s.pressed)||(keys.ArrowLeft.pressed)) player.velocity.x = -5
-    player.draw()
-    player.update()
+  if (keys.d.pressed || keys.ArrowRight.pressed) player.velocity.x = 5;
+  else if (keys.s.pressed || keys.ArrowLeft.pressed) player.velocity.x = -5;
+  player.draw();
+  player.update();
 }
-animate()
 
+//listen for window resize events
+window.addEventListener("resize", () => {
+  //update canvas size on window resize
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+animate();

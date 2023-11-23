@@ -7,10 +7,10 @@ class Player{
             y: 200
         }
 
-        this.velocity = {
-            x: 0,
-            y: 0
-        }
+    this.velocity = {
+      x: 0,
+      y: 0,
+    };
 
         this.width = 25
         this.height = 25
@@ -24,10 +24,10 @@ class Player{
         console.log(this.collisionBlocks)
     }
 
-    draw() {
-        c.fillStyle = 'red'
-        c.fillRect(this.position.x,this.position.y,this.width,this.height)
-    }
+  draw() {
+    c.fillStyle = "red";
+    c.fillRect(this.position.x, this.position.y, this.width, this.height);
+  }
 
     update(){
             this.position.x += this.velocity.x
@@ -90,4 +90,3 @@ class Player{
             } 
         }
     }
-}
