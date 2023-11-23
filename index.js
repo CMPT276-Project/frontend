@@ -4,47 +4,62 @@ const c = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerWidth;
 
-class Sprite {
-  constructor(position) {
-    this.position = position;
-    this.image = new Image();
-  }
-}
+const parsedCollisions = collisionMap1.parse2D()
+console.log(parsedCollisions)
+
+const collisionBlocks = parsedCollisions.createObjectsFrom2d()
+
+const backgroundMap1 = new Sprite({
+    position: {
+        x: 0,
+        y: 0,
+    },
+    imageSrc: './images/backgroundMap1.png'
+})
 
 //call constructor in Player.js file
-const player = new Player();
-const map = new Image();
-map.src = "images/Background Map 1.png";
+const player = new Player({
+    collisionBlocks: collisionBlocks
+})
 
 // Set default for keys
 const keys = {
-  w: {
-    pressed: false,
-  },
-  ArrowUp: {
-    pressed: false,
-  },
-  d: {
-    pressed: false,
-  },
-  ArrowRight: {
-    pressed: false,
-  },
-  s: {
-    pressed: false,
-  },
-  ArrowLeft: {
-    pressed: false,
-  },
+    w: {
+        pressed: false
+    },
+    ArrowUp: {
+        pressed: false
+    },
+    Space: {
+        pressed: false
+    },
+    d: {
+        pressed: false
+    },
+    ArrowRight: {
+        pressed: false
+    },
+    s: {
+        pressed: false
+    },
+    ArrowLeft: {
+        pressed: false
+    },
 };
+
 
 function animate() {
   //update canvas size on each animation frame
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
-  window.requestAnimationFrame(animate);
-  c.drawImage(map, 0, 0, canvas.width, canvas.height);
+function animate(){
+    window.requestAnimationFrame(animate)
+
+    backgroundMap1.draw()
+    collisionBlocks.forEach(CollisionBlock => {
+        CollisionBlock.draw()
+    })
 
   player.velocity.x = 0;
 

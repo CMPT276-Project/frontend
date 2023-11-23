@@ -4,25 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-        background: black;
+        body {
+          margin: 0;
+          overflow: hidden;
+          background: black;
       }
 
       canvas {
-        display: block;
+          display: block;
       }
     </style>
     <title>Canvas Game</title>
   </head>
 
+<canvas>
+
+</canvas>
+
   <body>
     <canvas id="gameCanvas"</canvas>
-
-    <script src="js/classes/Player.js"></script>
-    <script src="js/eventlistener.js"></script>
-    <script src="js/data/map1-collisions.js"></script>
-    <script src="index.js"></script>
+    
+    <script src ="utils.js"></script>
+    <script src ="js/data/map1-collisions.js"></script>
+    <script src ="js/classes/CollisionBlock.js"></script>
+    <script src ="js/classes/Sprite.js"></script>
+    <script src ="js/classes/Player.js"></script>
+    <script src ="js/eventlistener.js"></script>
+    <script src ="index.js"></script>
   </body>
 </html>
