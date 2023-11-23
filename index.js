@@ -19,7 +19,9 @@ const backgroundMap1 = new Sprite({
 
 //call constructor in Player.js file
 const player = new Player({
-    collisionBlocks: collisionBlocks
+    collisionBlocks: collisionBlocks,
+    imageSrc: './images/king-sprite/idle.png',
+    frameRate: 11
 })
 
 // Set default for keys
