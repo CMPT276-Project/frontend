@@ -21,7 +21,33 @@ const backgroundMap1 = new Sprite({
 const player = new Player({
     collisionBlocks: collisionBlocks,
     imageSrc: './images/king-sprite/idle.png',
-    frameRate: 11
+    frameRate: 11,
+    animations: {
+        idleRight: {
+            frameRate: 11,
+            frameBuffer: 2,
+            loop: true,
+            imageSrc: './images/king-sprite/idle.png'
+        },
+        idleLeft: {
+            frameRate: 11,
+            frameBuffer: 2,
+            loop: true,
+            imageSrc: './images/king-sprite/idleLeft.png',
+        }, 
+        runRight: {
+            frameRate: 8,
+            frameBuffer: 2,
+            loop: true,
+            imageSrc: './images/king-sprite/runRight.png',
+        },
+        runLeft: {
+            frameRate: 8,
+            frameBuffer: 2,
+            loop: true,
+            imageSrc: './images/king-sprite/runLeft.png',
+        }, 
+    },
 })
 
 // Set default for keys
@@ -59,8 +85,20 @@ function animate(){
 
   player.velocity.x = 0;
 
-  if (keys.d.pressed || keys.ArrowRight.pressed) player.velocity.x = 5;
-  else if (keys.s.pressed || keys.ArrowLeft.pressed) player.velocity.x = -5;
+  if (keys.d.pressed || keys.ArrowRight.pressed) {
+    player.switchSprite('runRight')
+    player.velocity.x = 5;
+    player.lastDirection = 'right'
+  }
+  else if (keys.s.pressed || keys.ArrowLeft.pressed){
+    player.switchSprite('runLeft')
+    player.velocity.x = -5;
+    player.lastDirection = 'left'
+  }
+  else{
+    if(player.lastDirection === 'right') player.switchSprite('idleRight')
+    else player.switchSprite('idleLeft')
+  }
   player.draw();
   player.update();
 }
