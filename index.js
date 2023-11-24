@@ -59,8 +59,8 @@ function animate(){
 
   player.velocity.x = 0;
 
-  if (keys.d.pressed || keys.ArrowRight.pressed) player.velocity.x = 15;
-  else if (keys.s.pressed || keys.ArrowLeft.pressed) player.velocity.x = -15;
+  if (keys.d.pressed || keys.ArrowRight.pressed) player.velocity.x = 5;
+  else if (keys.s.pressed || keys.ArrowLeft.pressed) player.velocity.x = -5;
   player.draw();
   player.update();
 }
