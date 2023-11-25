@@ -4,22 +4,13 @@ const c = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerWidth;
 
-const parsedCollisions = collisionMap1.parse2D()
-console.log(parsedCollisions)
-
-const collisionBlocks = parsedCollisions.createObjectsFrom2d()
-
-const backgroundMap1 = new Sprite({
-    position: {
-        x: 0,
-        y: 0,
-    },
-    imageSrc: './images/backgroundMap1.png'
-})
+let parsedCollisions 
+let collisionBlocks 
+let backgroundMap 
+let doors
 
 //call constructor in Player.js file
 const player = new Player({
-    collisionBlocks: collisionBlocks,
     imageSrc: './images/king-sprite/idle.png',
     frameRate: 11,
     animations: {
@@ -55,26 +46,90 @@ const player = new Player({
             onComplete: () => {
                 console.log('animation complete')
                 gsap.to(overlay, {
-                    opacity: 1
+                    opacity: 1,
+                    onComplete: () => {
+                        level++
+                        levels[level].init()
+                        player.switchSprite('idleRight')
+                        player.preventInput = false
+                        gsap.to(overlay, {
+                            opacity: 0, 
+                        })
+                    },
                 })
             },
         }, 
     },
 })
 
-const doors = [
-    new Sprite({
-        position: {
-            x: 750,
-            y: 385
+let level = 1
+let levels = {
+    1: {
+        init: () => {
+            parsedCollisions = collisionMap1.parse2D()
+            collisionBlocks = parsedCollisions.createObjectsFrom2d()
+            player.collisionBlocks = collisionBlocks
+
+            if (player.currentAnimation) player.currentAnimation.isActive = false
+
+
+            backgroundMap = new Sprite({
+                position: {
+                    x: 0,
+                    y: 0,
+                },
+                imageSrc: './images/backgroundMap1.png'
+            })
+
+            doors = [
+                new Sprite({
+                    position: {
+                        x: 750,
+                        y: 385
+                    },
+                    imageSrc: './images/doorOpen.png',
+                    frameRate: 5,
+                    frameBuffer: 5,
+                    loop: false,
+                    autoplay: false
+                }),
+            ]
         },
-        imageSrc: './images/doorOpen.png',
-        frameRate: 5,
-        frameBuffer: 5,
-        loop: false,
-        autoplay: false
-    }),
-]
+    },
+    2: {
+        init: () => {
+            parsedCollisions = collisionMap4.parse2D()
+            collisionBlocks = parsedCollisions.createObjectsFrom2d()
+            player.collisionBlocks = collisionBlocks
+            player.position.x = 100
+            player.position.y = 100
+
+            if (player.currentAnimation) player.currentAnimation.isActive = false
+
+            backgroundMap = new Sprite({
+                position: {
+                    x: 0,
+                    y: 0,
+                },
+                imageSrc: './images/backgroundMap4.png'
+            })
+
+            doors = [
+                new Sprite({
+                    position: {
+                        x: 100,
+                        y: 385
+                    },
+                    imageSrc: './images/doorOpen.png',
+                    frameRate: 5,
+                    frameBuffer: 5,
+                    loop: false,
+                    autoplay: false
+                }),
+            ]
+        },
+    },
+}
 
 // Set default for keys
 const keys = {
@@ -108,7 +163,7 @@ const overlay= {
 function animate(){
     window.requestAnimationFrame(animate)
 
-    backgroundMap1.draw()
+    backgroundMap.draw()
     collisionBlocks.forEach(CollisionBlock => {
         CollisionBlock.draw()
     })
@@ -137,4 +192,5 @@ window.addEventListener("resize", () => {
   canvas.height = window.innerHeight;
 });
 
+levels[level].init()
 animate();
