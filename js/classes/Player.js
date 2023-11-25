@@ -1,7 +1,7 @@
 class Player extends Sprite{
     constructor({
-        collisionBlocks = [], imageSrc, frameRate, animations}){
-        super({imageSrc, frameRate, animations}) //calls the constructor in Sprite class
+        collisionBlocks = [], imageSrc, frameRate, animations, loop}){
+        super({imageSrc, frameRate, animations, loop}) //calls the constructor in Sprite class
         this.position = {
             x: 200,
             y: 200
@@ -22,6 +22,24 @@ class Player extends Sprite{
         console.log(this.collisionBlocks)
     }
 
+    handleInput(keys){
+        if(this.preventInput) return
+        if (keys.d.pressed || keys.ArrowRight.pressed) {
+            this.switchSprite('runRight')
+            this.velocity.x = 5;
+            this.lastDirection = 'right'
+          }
+          else if (keys.s.pressed || keys.ArrowLeft.pressed){
+            this.switchSprite('runLeft')
+            this.velocity.x = -5;
+            this.lastDirection = 'left'
+          }
+          else{
+            if(this.lastDirection === 'right') this.switchSprite('idleRight')
+            else this.switchSprite('idleRight')
+          }
+    }
+
     update(){
         // c.fillStyle = 'rgba(0,0,255,0.5)'
         // c.fillRect(this.position.x, this.position.y, this.width, this.height)
@@ -40,12 +58,15 @@ class Player extends Sprite{
         this.checkForVerticalCollisions()
     }
 
+    
+
     switchSprite(name){
         if(this.image === this.animations[name].image) return
         this.currentFrame = 0
         this.image = this.animations[name].image
         this.frameRate = this.animations[name].frameRate
         this.frameBuffer = this.animations[name].frameBuffer
+        this.loop = this.animations[name].loop
     }
 
     updateHitbox(){
