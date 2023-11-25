@@ -116,8 +116,53 @@ let levels = {
 
             doors = [
                 new Sprite({
+                    doorID: 'leads_to_map1',
                     position: {
                         x: 100,
+                        y: 95
+                    },
+                    imageSrc: './images/doorOpen.png',
+                    frameRate: 5,
+                    frameBuffer: 5,
+                    loop: false,
+                    autoplay: false
+                }),
+                new Sprite({
+                    position: {
+                        x: 690,
+                        y: 223
+                    },
+                    imageSrc: './images/doorOpen.png',
+                    frameRate: 5,
+                    frameBuffer: 5,
+                    loop: false,
+                    autoplay: false
+                }),
+                new Sprite({
+                    position: {
+                        x: 450,
+                        y: 223
+                    },
+                    imageSrc: './images/doorOpen.png',
+                    frameRate: 5,
+                    frameBuffer: 5,
+                    loop: false,
+                    autoplay: false
+                }),
+                new Sprite({
+                    position: {
+                        x: 570,
+                        y: 385
+                    },
+                    imageSrc: './images/doorOpen.png',
+                    frameRate: 5,
+                    frameBuffer: 5,
+                    loop: false,
+                    autoplay: false
+                }),
+                new Sprite({
+                    position: {
+                        x: 785,
                         y: 385
                     },
                     imageSrc: './images/doorOpen.png',
