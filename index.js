@@ -52,6 +52,12 @@ const player = new Player({
             frameBuffer: 2,
             loop: false,
             imageSrc: './images/king-sprite/enterDoor.png',
+            onComplete: () => {
+                console.log('animation complete')
+                gsap.to(overlay, {
+                    opacity: 1
+                })
+            },
         }, 
     },
 })
@@ -95,6 +101,10 @@ const keys = {
     },
 };
 
+const overlay= {
+    opacity: 0,
+}
+
 function animate(){
     window.requestAnimationFrame(animate)
 
@@ -107,11 +117,17 @@ function animate(){
         door.draw()
     })
 
-  player.velocity.x = 0;
+    player.velocity.x = 0;
 
-player.handleInput(keys)
-  player.draw();
-  player.update();
+    player.handleInput(keys)
+    player.draw();
+    player.update();
+
+    c.save()
+    c.globalAlpha = overlay.opacity
+    c.fillStyle = 'black'
+    c.fillRect(0,0, canvas.width, canvas.height)
+    c.restore()
 }
 
 //listen for window resize events

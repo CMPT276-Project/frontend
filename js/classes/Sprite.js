@@ -16,6 +16,7 @@ class Sprite {
         this.animations = animations
         this.loop = loop
         this.autoplay = autoplay
+        this.currentAnimation
 
         if(this.animations){
             //where keys are the animations objects within animation in index.js 
@@ -60,8 +61,15 @@ class Sprite {
     updateFrame(){
         if(!this.autoplay) return
         this.elapsedFrames++
-        if(this.elapsedFrames % this.frameBuffer === 0)
+        if(this.elapsedFrames % this.frameBuffer === 0){
             if (this.currentFrame< this.frameRate -1) this.currentFrame++
             else if (this.loop) this.currentFrame = 0
+        }
+        if(this.currentAnimation?.onComplete){
+            if(this.currentFrame === this.frameRate-1 && (!this.currentAnimation.isActive)){
+                this.currentAnimation.onComplete()
+                this.currentAnimation.isActive = true
+            }
+        }
     }
 }
