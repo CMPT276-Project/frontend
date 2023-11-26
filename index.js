@@ -48,9 +48,11 @@ const player = new Player({
         gsap.to(overlay, {
           opacity: 1,
           onComplete: () => {
-            level++;
+            if (level === 3) level = 1
+            else level++
             levels[level].init();
-            player.switchSprite("idleRight");
+            if(level === 3) player.switchSprite("idleLeft")
+            else player.switchSprite("idleRight")
             player.preventInput = false;
             gsap.to(overlay, {
               opacity: 0,
@@ -62,7 +64,7 @@ const player = new Player({
   },
 });
 
-let level = 1;
+let level = 3
 let levels = {
   1: {
     init: () => {
@@ -71,6 +73,8 @@ let levels = {
       player.collisionBlocks = collisionBlocks;
 
       if (player.currentAnimation) player.currentAnimation.isActive = false;
+
+      player.position.x = 150
 
       backgroundMap = new Sprite({
         position: {
@@ -81,9 +85,10 @@ let levels = {
       });
 
       doors = [
+        // door to next level 
         new Sprite({
           position: {
-            x: 750,
+            x: 150,
             y: 385,
           },
           imageSrc: "./images/doorOpen.png",
@@ -92,6 +97,42 @@ let levels = {
           loop: false,
           autoplay: false,
         }),
+        //trivia door 1
+        new Sprite({
+            position: {
+              x: 550,
+              y: 385,
+            },
+            imageSrc: "./images/doorOpen.png",
+            frameRate: 5,
+            frameBuffer: 5,
+            loop: false,
+            autoplay: false,
+          }),
+          //trivia door 2
+          new Sprite({
+            position: {
+              x: 650,
+              y: 385,
+            },
+            imageSrc: "./images/doorOpen.png",
+            frameRate: 5,
+            frameBuffer: 5,
+            loop: false,
+            autoplay: false,
+          }),
+          //trivia door 3
+          new Sprite({
+            position: {
+              x: 750,
+              y: 385,
+            },
+            imageSrc: "./images/doorOpen.png",
+            frameRate: 5,
+            frameBuffer: 5,
+            loop: false,
+            autoplay: false,
+          }),
       ];
     },
   },
@@ -113,12 +154,13 @@ let levels = {
         imageSrc: "./images/backgroundMap4.png",
       });
 
+      //door to level
       doors = [
+        //leads to map
         new Sprite({
-          doorID: "leads_to_map1",
           position: {
-            x: 100,
-            y: 95,
+            x: 110,
+            y: 191,
           },
           imageSrc: "./images/doorOpen.png",
           frameRate: 5,
@@ -126,31 +168,10 @@ let levels = {
           loop: false,
           autoplay: false,
         }),
+        //leads to trivia
         new Sprite({
           position: {
-            x: 690,
-            y: 223,
-          },
-          imageSrc: "./images/doorOpen.png",
-          frameRate: 5,
-          frameBuffer: 5,
-          loop: false,
-          autoplay: false,
-        }),
-        new Sprite({
-          position: {
-            x: 450,
-            y: 223,
-          },
-          imageSrc: "./images/doorOpen.png",
-          frameRate: 5,
-          frameBuffer: 5,
-          loop: false,
-          autoplay: false,
-        }),
-        new Sprite({
-          position: {
-            x: 570,
+            x: 120,
             y: 385,
           },
           imageSrc: "./images/doorOpen.png",
@@ -159,9 +180,10 @@ let levels = {
           loop: false,
           autoplay: false,
         }),
+        //leads to trivia
         new Sprite({
           position: {
-            x: 785,
+            x: 260,
             y: 385,
           },
           imageSrc: "./images/doorOpen.png",
@@ -170,6 +192,89 @@ let levels = {
           loop: false,
           autoplay: false,
         }),
+        //door to trivia
+        new Sprite({
+          position: {
+            x: 810,
+            y: 285,
+          },
+          imageSrc: "./images/doorOpen.png",
+          frameRate: 5,
+          frameBuffer: 5,
+          loop: false,
+          autoplay: false,
+        }),
+      ];
+    },
+  },
+
+  3: {
+    init: () => {
+      parsedCollisions = collisionMap2.parse2D();
+      collisionBlocks = parsedCollisions.createObjectsFrom2d();
+      player.collisionBlocks = collisionBlocks;
+
+      if (player.currentAnimation) player.currentAnimation.isActive = false;
+
+      player.position.x = 120
+
+      backgroundMap = new Sprite({
+        position: {
+          x: 0,
+          y: 0,
+        },
+        imageSrc: "./images/backgroundMap2.png",
+      });
+
+      doors = [
+        // map door
+        new Sprite({
+          position: {
+            x: 120,
+            y: 320,
+          },
+          imageSrc: "./images/doorOpen.png",
+          frameRate: 5,
+          frameBuffer: 5,
+          loop: false,
+          autoplay: false,
+        }),
+        //trivia door 1
+        new Sprite({
+            position: {
+              x: 420,
+              y: 255,
+            },
+            imageSrc: "./images/doorOpen.png",
+            frameRate: 5,
+            frameBuffer: 5,
+            loop: false,
+            autoplay: false,
+          }),
+          //trivia door 2
+          new Sprite({
+            position: {
+              x: 700,
+              y: 385,
+            },
+            imageSrc: "./images/doorOpen.png",
+            frameRate: 5,
+            frameBuffer: 5,
+            loop: false,
+            autoplay: false,
+          }),
+          //trivia door 3
+          new Sprite({
+            position: {
+              x: 800,
+              y: 385,
+            },
+            imageSrc: "./images/doorOpen.png",
+            frameRate: 5,
+            frameBuffer: 5,
+            loop: false,
+            autoplay: false,
+          }),
       ];
     },
   },
