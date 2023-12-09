@@ -1,3 +1,18 @@
+# Canvas HTML Sprite Game
+
+Part of this project was created using HTML, CSS, Javascript, and CANVAS in HTML. 
+This game works in index.html in your web browser.
+
+2 game assets were used:
+1. https://pixelfrog-assets.itch.io/kings-and-pigs
+2. https://pixelfrog-assets.itch.io/pirate-bomb
+   
+Game Maps were created in the Tiled Software
+Texture Packer was used to create sprite sheets for game assets to make them easily accessible to the game maps
+
+The game was created by following this tutorial by Chris Courses:
+https://www.youtube.com/watch?v=Lcdc2v-9PjA&ab_channel=ChrisCourses
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
